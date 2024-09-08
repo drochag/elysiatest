@@ -1,7 +1,7 @@
 import Elysia from "elysia";
-import { api } from "~/server/api";
+import { app } from "~/server/api";
 
-const routeApp = new Elysia().use(api);
+const routeApp = new Elysia({ prefix: '/api' }).use(app);
 
 export const GET = function (request: Request) {
   console.log(request)

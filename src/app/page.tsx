@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { edenFetch } from "@elysiajs/eden";
-import type { Api } from "~/server/api/index";
+import { treaty } from "@elysiajs/eden";
+import { app } from "~/server/api/index";
 
-const api = edenFetch<Api>("http://localhost:3000/");
+const api = treaty(app);
 
 export const dynamic = true;
 
 export default async function HomePage() {
-  const { data, error, status } = await api('/api/posts/:id', { params: { id: 1 } });
+  const { data, error, status } = await api.posts({ id: 1 }).get();
   console.log('data', data);
   console.log('typeof data', typeof data);
   console.log('error', error);
